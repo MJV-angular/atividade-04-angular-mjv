@@ -1,10 +1,15 @@
 <div class="container">
-  <div class="controllers">
-    <span (click)="onButtonClickPrevious()" class="left"><img src="../../../../../assets/img/seta.svg" alt="" srcset=""></span>
-    <span (click)="onButtonClickNext()" class="rigth"><img src="../../../../../assets/img/seta.svg" alt="" srcset=""></span>
-  </div>
-  <div class="slider">
 
+    <div class="controllers">
+      <span (click)="onButtonClickPrevious()" class="left"><img src="../../../../../assets/img/seta.svg" alt="" srcset=""></span>
+      <span (click)="onButtonClickNext()" class="rigth"><img src="../../../../../assets/img/seta.svg" alt="" srcset=""></span>
+    </div>
+    <div class="radios">
+      <input *ngFor="let product of products" type="radio">
+    </div>
+ 
+
+  <div class="slider">
     <div class="slider-inner" #slider [style.margin-left.px]="marginValue">
       <div class="slides" *ngFor="let product of products" #img>
         <figure>

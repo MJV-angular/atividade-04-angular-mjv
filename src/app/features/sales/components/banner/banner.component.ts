@@ -1,53 +1,58 @@
 import { Component, ViewChild, ElementRef } from '@angular/core';
 
-
 @Component({
   selector: 'app-banner',
   templateUrl: './banner.component.html',
   styleUrls: ['./banner.component.scss'],
 })
-
-
 export class BannerComponent {
   products: IProducts[] = [];
   counter = 0;
   marginValue = 0;
 
-
   @ViewChild('slider') slider: ElementRef | undefined;
   @ViewChild('img') img: ElementRef | undefined;
 
   onButtonClickPrevious(): void {
+    clearInterval(this.setTime);
     if (this.counter > 0) {
       this.counter -= 1;
-      this.marginValue += this.img?.nativeElement.clientWidth
-    }else{
-      this.counter = this.products.length-1
-      this.marginValue = (this.products.length-1)*-this.img?.nativeElement.clientWidth
+      this.marginValue += this.img?.nativeElement.clientWidth;
+    } else {
+      this.counter = this.products.length - 1;
+      this.marginValue =
+        (this.products.length - 1) * -this.img?.nativeElement.clientWidth;
     }
+    this.setTime = setInterval(() => {
+      this.onButtonClickNext();
+    }, 7000);
   }
 
   onButtonClickNext(): void {
+    clearInterval(this.setTime);
+    this.next();
+    this.setTime = setInterval(() => {
+      this.onButtonClickNext();
+    }, 7000);
+  }
+
+  next(): void {
     if (this.counter < this.products.length - 1) {
       this.counter += 1;
-      this.marginValue -= this.img?.nativeElement.clientWidth
-    }else{
+      this.marginValue -= this.img?.nativeElement.clientWidth;
+    } else {
       this.counter = 0;
-      this.marginValue = 0
+      this.marginValue = 0;
     }
   }
 
-  delay():void{
-    setTimeout(() => {
-  this.onButtonClickNext()
-  this.delay()
-  }, 7000)
-
-  }
+  setTime = setInterval(() => {
+    this.onButtonClickNext();
+  }, 7000);
 
   constructor() {
     this.counter = 0;
-    this.delay()
+
     this.products = [
       {
         id: 1,
