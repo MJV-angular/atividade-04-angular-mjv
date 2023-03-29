@@ -5,15 +5,17 @@
       <span (click)="onButtonClickNext()" class="rigth"><img src="../../../../../assets/img/seta.svg" alt="" srcset=""></span>
     </div>
     <div class="radios">
-      <input *ngFor="let product of products" type="radio">
+      <label *ngFor="let product of products; let i = index">
+        <input type="radio" name="product" [checked]="i === counter">
+      </label>
     </div>
- 
+
 
   <div class="slider">
     <div class="slider-inner" #slider [style.margin-left.px]="marginValue">
       <div class="slides" *ngFor="let product of products" #img>
         <figure>
-          <img [style.display] src="{{ product.img }}" alt="" srcset="" />
+          <img src="{{ product.img }}" alt="" srcset="" />
         </figure>
 
         <div class="container-info">
