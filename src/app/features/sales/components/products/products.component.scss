@@ -1,0 +1,111 @@
+@keyframes opacity {
+  0% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 1;
+  }
+}
+
+@keyframes slide-right {
+  0% {
+    -webkit-transform: translateX(-100px);
+    transform: translateX(-100px);
+    opacity: 0;
+  }
+  100% {
+    -webkit-transform: translateX(0px);
+    transform: translateX(0px);
+    opacity: 1;
+  }
+}
+
+.container-list {
+  padding: 50px;
+
+  h1 {
+    font-weight: 700;
+    font-size: 30px;
+    margin-bottom: 35px;
+    -webkit-animation: opacity 1s cubic-bezier(0.25, 0.46, 0.45, 0.94) both;
+    animation: opacity 1s cubic-bezier(0.25, 0.46, 0.45, 0.94) both;
+  }
+  h3 {
+    font-size: 20px;
+    font-weight: 600;
+  }
+  div {
+    ul {
+      padding: 40px 0;
+      display: flex;
+      justify-content: center;
+      gap: 50px;
+      flex-wrap: wrap;
+      li {
+        padding: 25px 15px;
+        width: 350px;
+        border: rgba(40, 41, 61, 0.08) 1px solid;
+        cursor: pointer;
+        -webkit-animation: slide-right 0.5s cubic-bezier(0.25, 0.46, 0.45, 0.94)
+          both;
+        animation: slide-right 0.5s cubic-bezier(0.25, 0.46, 0.45, 0.94) both;
+        display: flex;
+        flex-direction: column;
+        gap: 25px;
+        background: rgba(255, 255, 255, 0.108);
+        transition: box-shadow 200ms ease 0s;
+        box-shadow: rgba(40, 41, 61, 0.08) 0px 0px 1px,
+          rgba(96, 97, 112, 0.16) 0px 0.5px 2px;
+        backdrop-filter: blur(4.5px);
+        -webkit-backdrop-filter: blur(6.5px);
+        &:hover {
+          border: #60489d 1px solid;
+        }
+        .assessment {
+          padding: 10px;
+          position: absolute;
+          img {
+            width: 20px;
+          }
+        }
+        button {
+          cursor: pointer;
+          background: linear-gradient(270deg, #60489d, #4260ad);
+          font-size: 18px;
+          color: white;
+          width: 100%;
+          border: none;
+          height: 60px;
+        }
+        .soldOff {
+          background: #3e3e3e;
+        }
+
+        .icon,
+        .withoutImg {
+          width: 100%;
+          height: 314px;
+          background: #f2f2f2ae;
+          display: flex;
+          justify-content: center;
+          align-items: center;
+          img {
+            width: 90%;
+          }
+        }
+
+        .withoutImg {
+          background-size: 50%;
+          background-position: center;
+          background-repeat: no-repeat;
+          background-image: url("../../../../../assets/img/imagenotfound.svg");
+        }
+        .text {
+          display: flex;
+          flex-direction: column;
+          gap: 15px;
+        }
+      }
+    }
+  }
+}

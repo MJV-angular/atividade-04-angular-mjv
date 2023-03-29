@@ -1,0 +1,32 @@
+<div class="container">
+  <div class="controllers">
+    <span (click)="onButtonClickPrevious()" class="left"><img src="../../../../../assets/img/seta.svg" alt="" srcset=""></span>
+    <span (click)="onButtonClickNext()" class="rigth"><img src="../../../../../assets/img/seta.svg" alt="" srcset=""></span>
+  </div>
+  <div class="slider">
+
+    <div class="slider-inner" #slider [style.margin-left.px]="marginValue">
+      <div class="slides" *ngFor="let product of products" #img>
+        <figure>
+          <img [style.display] src="{{ product.img }}" alt="" srcset="" />
+        </figure>
+
+        <div class="container-info">
+          <div class="info">
+           {{product.title}}
+            <div class="price">
+              <span>{{
+                product.price.toLocaleString("pt-BR", {
+                  style: "currency",
+                  currency: "BRL"
+                })
+              }}</span>
+            </div>
+            <p>EM ATÉ 10X SEM JUROS</p>
+            <button>Confira!</button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
